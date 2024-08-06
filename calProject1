@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> The Calculator Project </title>
+    </head>
+    <body>
+        <p class="displayCalculation"></p>
+
+        <button onclick="addString('1')">1</button>
+        <button onclick="addString('2')">2</button>
+        <button onclick="addString('3')">3</button>
+        <button onclick="addString(' + ')">+</button>
+        <p>
+            <button onclick="addString('4')">4</button>
+            <button onclick="addString('5')">5</button>
+            <button onclick="addString('6')">6</button>
+            <button onclick="addString(' - ')">-</button>
+        </p>
+        <p>
+            <button onclick="addString('7')">7</button>
+            <button onclick="addString('8')">8</button>
+            <button onclick="addString('9')">9</button>
+            <button onclick="addString(' * ')">*</button>
+        </p>
+        <p>
+            <button onclick="addString('0')">0</button>
+            <button onclick="addString(' . ')">.</button>
+            <button onclick="addString(' = ')">=</button>
+            <button onclick="addString(' / ')">/</button>
+        </p>
+        <p>
+            <button onclick="clearButton()">Clear</button>
+        </p>
+        <script>
+           let calculation = localStorage.getItem('calculator');
+           document.querySelector('.displayCalculation').textContent = calculation;
+           //calculation = '';
+           function addString(num){
+              if(num !== ' = '){
+               document.querySelector('.displayCalculation').textContent = calculation += num;
+               //console.log(calculation += num);
+              }
+              else{
+                calculation = eval(calculation);
+                document.querySelector('.displayCalculation').textContent = calculation;
+                localStorage.setItem('calculator',calculation);
+              }
+           }
+           function clearButton(){
+            document.querySelector('.displayCalculation').textContent = '0';
+            calculation = '';
+            localStorage.setItem('calculator',calculation);
+           }
+
+        </script>
+    </body>
+</html>
